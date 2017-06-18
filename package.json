@@ -1,0 +1,11 @@
+{
+  "name": "gvbot",
+  "version": "1.0.0",
+  "description": "testing out api.ai bots for rga side project. Learning API.ai tool, integrating twitter api and more!",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC"
+}
