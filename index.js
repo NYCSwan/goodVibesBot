@@ -4,8 +4,8 @@
 // You’ll read in that JSON file using JavaScript and display the results on your web app.
 // If available, your web app will also use the Web Speech API (available in Google Chrome 33 and above) to respond back to you verbally.
 
-const accessToken = '09f082fa3d154dd081fdd27dd2360576'; //client
-const subscriptionKey = '47a5893f66844728aec2fcfd7c9a6d39'; //dev key
+const accessToken = ''; //client
+const subscriptionKey = ''; //dev key
 const baseUrl = 'https://api.api.ai/v1/';
 let $speechInput;
 let $recordBtn;
