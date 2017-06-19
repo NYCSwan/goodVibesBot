@@ -1,0 +1,32 @@
+.botHeader {
+  background-color: #de1e7e;
+  color: #BADA55;
+  height: 200px;
+  margin-top: 0;
+}
+li {
+  list-style: none;
+}
+.container {
+  margin-left: auto;
+  margin-right: auto;
+  width: 70%;
+  height: 100vh;
+  background-image: url('images/cheesy-smile.jpg');
+  background-repeat: no-repeat;
+}
+.spoken-response {
+  overflow: hidden;
+  max-height: auto;
+  border-radius: 45%;
+  -webkit-transition: all 0.35s ease-in;
+}
+.spoken-response.is-active {
+  max-height: 400px;
+  float: right;
+}
+.spoken-response__text {
+  background-color: #c0ffee;
+  color: #10aded;
+  padding: 1em;
+}
