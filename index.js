@@ -7,20 +7,16 @@
 const accessToken = '09f082fa3d154dd081fdd27dd2360576'; //client
 const subscriptionKey = '47a5893f66844728aec2fcfd7c9a6d39'; //dev key
 const baseUrl = 'https://api.api.ai/v1/';
-let $speechInput;
-let $recordBtn;
+let spokenInput;
+let recordBtn;
 let recognition;
 const messageRecording = "Recording...";
 const messageCouldntHear = 'I couldn\'t hear that. Try again.';
 const messageInternalError = 'Oops. Something is wrong internally. Getting an error';
-const  messageSorry = 'I\'m sorry. I can\'t answer that for you.';
+const messageSorry = 'I\'m sorry. I can\'t answer that for you.';
 const speechInput = document.getElementById('speech');
-const recordBtn = document.getElementById('record');
+recordBtn = document.getElementById('record');
 
-// $(document).ready(function() {
-  // $speechInput = $('#speech');
-  // $recordBtn = $("#record");
-  // let recognition;
 
   speechInput.addEventListener("keypress", function() {
     if(event.which == 13) { //enter
@@ -82,12 +78,13 @@ const recordBtn = document.getElementById('record');
       respond(messageCouldntHear);
       stopRecognition();
     };
+
     recognition.lang = 'en-US';
     recognition.start();
   }
 
   function updateRecord() {
-    recordBtn.text(recognition ? 'STOP' : 'SPEAK');
+    recognition ? recordBtn.innerText ='STOP' : recordBtn.innerText = 'SPEAK';
   }
 
   function setInput(text) {
@@ -102,9 +99,10 @@ const recordBtn = document.getElementById('record');
     const url = `${baseUrl}query`;
     const request = new XMLHttpRequest();
     let data = JSON.stringify({query: text, lang: "en", sessionId: "1234567890"});
-    console.log(url);
+    console.log(data);
     request.open("POST", url, true);
     request.setRequestHeader("Authorization", `Bearer ${accessToken}`)
+    request.setRequestHeader("ocp-apim-subscription-key", `${subscriptionKey}`);
     request.send(data)
     //       "ocp-apim-subscription-key": subscriptionKey)
   //   $.ajax({
@@ -147,9 +145,9 @@ const recordBtn = document.getElementById('record');
       window.speechSynthesis.speak(msg);
     }
 
-    document.getElementById('spokenResponse')
-      .addClass("is-active")
-      .find('.spoken-response__text')
-      .html(val);
+  //   document.getElementById('spokenResponse')
+  //     .addClass("is-active")
+  //     .find('.spoken-response__text')
+  //     .html(val);
   }
 // });
