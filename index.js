@@ -84,7 +84,7 @@ recordBtn = document.getElementById('record');
   }
 
   function updateRecord() {
-    recognition ? recordBtn.innerText ='STOP' : recordBtn.innerText = 'SPEAK';
+    recognition ? recordBtn.innerText='STOP' : recordBtn.innerText='SPEAK';
   }
 
   function setInput(text) {
@@ -99,10 +99,18 @@ recordBtn = document.getElementById('record');
     const url = `${baseUrl}query`;
     const request = new XMLHttpRequest();
     let data = JSON.stringify({query: text, lang: "en", sessionId: "1234567890"});
-    console.log(data);
+    console.log(text);
     request.open("POST", url, true);
     request.setRequestHeader("Authorization", `Bearer ${accessToken}`)
     request.setRequestHeader("ocp-apim-subscription-key", `${subscriptionKey}`);
+    request.setRequestHeader('Content-Type', "application/json");
+    request.onload = function() {
+      if(request.status === 200) {
+        console.log('request loaded');
+      } else if (request.status !== 200){
+        console.log(`request status ${request.status}`);
+      }
+    }
     request.send(data)
     //       "ocp-apim-subscription-key": subscriptionKey)
   //   $.ajax({
