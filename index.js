@@ -4,37 +4,37 @@
 // You’ll read in that JSON file using JavaScript and display the results on your web app.
 // If available, your web app will also use the Web Speech API (available in Google Chrome 33 and above) to respond back to you verbally.
 
-const accessToken = ''; //client
-const subscriptionKey = ''; //dev key
-const baseUrl = 'https://api.api.ai/v1/';
+const accessToken = ""; //client
+const subscriptionKey = ""; //dev key
+const baseUrl = "https://api.api.ai/v1/";
 let $speechInput;
 let $recordBtn;
 let recognition;
 const messageRecording = "Recording...";
-const messageCouldntHear = 'I couldn\'t hear that. Try again.';
-const messageInternalError = 'Oops. Something is wrong internally. Getting an error';
-const  messageSorry = 'I\'m sorry. I can\'t answer that for you.';
-
+const messageCouldntHear = "I couldn't hear that. Try again.";
+const messageInternalError = "Oops. Something is wrong internally. Getting an error";
+const messageSorry = "I'm sorry. I can't answer that for you.";
 
 $(document).ready(function() {
-  $speechInput = $('#speech');
+  $speechInput = $("#speech");
   $recordBtn = $("#record");
   let recognition;
 
   $speechInput.keypress(function(event) {
-    if(event.which == 13) { //enter
+    if (event.which == 13) {
+      //enter
       event.preventDefault();
-      send()
+      send();
     }
   });
 
   // turns on/off speech recog
-  $('#record').click(function(event) {
+  $("#record").click(function(event) {
     switchRecognition();
-  })
+  });
 
   function switchRecognition() {
-    if(recognition) {
+    if (recognition) {
       stopRecognition();
     } else {
       startRecognition();
@@ -42,11 +42,11 @@ $(document).ready(function() {
   }
 
   function stopRecognition() {
-    if(recognition) {
+    if (recognition) {
       recognition.stop();
       recognition = null;
     }
-    updateRecord()
+    updateRecord();
   }
 
   function startRecognition() {
@@ -55,14 +55,14 @@ $(document).ready(function() {
     recognition.onstart = function(event) {
       respond(messageRecording);
       updateRecord();
-    }
+    };
 
     recognition.onresult = function(event) {
-      let text = '';
+      let text = "";
       console.log(event);
-      for(let i = event.resultIndex; i < event.results.length; i++) {
+      for (let i = event.resultIndex; i < event.results.length; i++) {
         console.log(`speech text message: ${event.results[i][0].transcript}`);
-        text += event.results[i][0].transcript
+        text += event.results[i][0].transcript;
       }
       setInput(text);
       stopRecognition();
@@ -72,16 +72,16 @@ $(document).ready(function() {
       respond(messageCouldntHear);
       stopRecognition();
     };
-    recognition.lang = 'en-US';
+    recognition.lang = "en-US";
     recognition.start();
   }
 
   function updateRecord() {
-    $recordBtn.text(recognition ? 'STOP' : 'SPEAK');
+    $recordBtn.text(recognition ? "STOP" : "SPEAK");
   }
 
   function setInput(text) {
-    $('input').val(text);
+    $("input").val(text);
     send();
   }
 
@@ -95,12 +95,13 @@ $(document).ready(function() {
       contentType: "application/json; charset=utf-8",
       dataType: "json",
       headers: {
-        "Authorization": `Bearer ${accessToken}`,
+        Authorization: `Bearer ${accessToken}`,
         "ocp-apim-subscription-key": subscriptionKey
       },
-      data: JSON.stringify({query: text, lang: "en", sessionId: "1234567890"}),
+      data: JSON.stringify({ query: text, lang: "en", sessionId: "1234567890" }),
 
       success: function(data) {
+        debugger;
         prepareResponse(data);
       },
       error: function() {
@@ -117,7 +118,7 @@ $(document).ready(function() {
   }
 
   function respond(val) {
-    if (val === '') {
+    if (val === "") {
       val = messageSorry;
     }
 
@@ -125,10 +126,10 @@ $(document).ready(function() {
       let msg = new SpeechSynthesisUtterance();
       msg.voiceURI = "native";
       msg.txt = val;
-      msg.lang = 'en-US';
+      msg.lang = "en-US";
       window.speechSynthesis.speak(msg);
     }
 
-    $("#spokenResponse").addClass("is-active").find('.spoken-response__text').html(val);
+    $("#spokenResponse").addClass("is-active").find(".spoken-response__text").html(val);
   }
 });
