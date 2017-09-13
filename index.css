@@ -25,7 +25,7 @@ li {
   max-height: 400px;
   float: right;
 }
-.spoken-response__text {
+.spoken-response {
   background-color: #c0ffee;
   color: #10aded;
   padding: 1em;

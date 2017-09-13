@@ -1,9 +1,23 @@
-start up:
-1. copy html file to browser window
-next steps:
-convert to node to start
-jquery to vanilla
-get weather going
+#BreakThru Bot: spreading good vibes
+API.AI Bot technology integrated into FB messenger, and using HTML5 chrome specific speech events.
 
-fulfillment:
-Setting up a webhook allows you to pass information from a matched intent into a web service and get a result from it.
+#Local start up Instructions:
+1. paste the index.html file path onto a chrome browser window
+2. Enable location and voice services on chrome.
+
+#Prereqs:
+none for running locally
+
+#Tests:
+TBD
+
+#Deployment setup:
+Na
+
+#Acknowledgements:
+API.ai - excellent bot tool with built in machine learning for 
+
+#Next steps:
+Deploy on node
+Add Content
+hook into facebook messenger
