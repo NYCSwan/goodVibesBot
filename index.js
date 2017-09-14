@@ -3,6 +3,7 @@
 // Once the command has been received, you can use jQuery to submit an AJAX POST request to Api.ai. Api.ai will return its knowledge as a JSON object, as you saw above in the test console.
 // You’ll read in that JSON file using JavaScript and display the results on your web app.
 // If available, your web app will also use the Web Speech API (available in Google Chrome 33 and above) to respond back to you verbally.
+
   const accessToken = '09f082fa3d154dd081fdd27dd2360576'; //client
   const subscriptionKey = '47a5893f66844728aec2fcfd7c9a6d39'; //dev key
   const baseUrl = 'https://api.api.ai/v1/';
@@ -70,35 +71,6 @@
       recognition.lang = "en-US";
       recognition.start();
       console.log('startRecognition');
-
-    }
-      // recognition.onresult = function(event) {
-      //   let text = '';
-      //   console.log(`onresult: ${event}`);
-      //   for(let i = event.resultIndex; i < event.results.length; i++) {
-      //     console.log(`speech text message: ${event.results[i][0].transcript}`);
-      //     text += event.results[i][0].transcript
-      //   }
-      //   setInput(`text: ${text}`);
-      //   stopRecognition();
-      // };
-      //
-      // recognition.onend = function(event) {
-      //   respond(messageCouldntHear);
-      //   stopRecognition();
-      // };
-      //
-      // recognition.lang = 'en-US';
-      // recognition.start();
-    // }
-
-
-    function switchRecognition() {
-      if (recognition) {
-        stopRecognition();
-      } else {
-        startRecognition();
-      }
     }
 
     function updateRecord() {
@@ -162,3 +134,4 @@
 
       // spokenResponse.classList.toggle("is-active");
     }
+
