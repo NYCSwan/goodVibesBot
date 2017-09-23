@@ -72,25 +72,6 @@
       console.log('startRecognition');
 
     }
-      // recognition.onresult = function(event) {
-      //   let text = '';
-      //   console.log(`onresult: ${event}`);
-      //   for(let i = event.resultIndex; i < event.results.length; i++) {
-      //     console.log(`speech text message: ${event.results[i][0].transcript}`);
-      //     text += event.results[i][0].transcript
-      //   }
-      //   setInput(`text: ${text}`);
-      //   stopRecognition();
-      // };
-      //
-      // recognition.onend = function(event) {
-      //   respond(messageCouldntHear);
-      //   stopRecognition();
-      // };
-      //
-      // recognition.lang = 'en-US';
-      // recognition.start();
-    // }
 
 
     function switchRecognition() {
@@ -129,7 +110,7 @@
         if(request.status >= 200 && request.status < 400) {
           console.log('request loaded');
           var data = JSON.parse(request.responseText);
-          setResponse(data);
+          setResponse(data); 
         } else if (request.status !== 200){
           console.log(`request status ${request.status}`);
           setResponse("Internal Server Error");
@@ -142,7 +123,6 @@
     function setResponse(val) {
       //should be from api.ai
       let spokenResponse = val.result.speech;
-      debugger;
       console.log(`spokenResponse: ${spokenResponse}`);
 
       document.getElementById("spokenResponse").innerText = spokenResponse;

@@ -1,5 +1,5 @@
 #BreakThru Bot: spreading good vibes
-API.AI Bot technology integrated into FB messenger, and using HTML5 chrome specific speech events.
+API.AI Bot technology integrated into twitter and using HTML5 chrome specific speech events.
 
 #Local start up Instructions:
 1. paste the index.html file path onto a chrome browser window
@@ -15,7 +15,7 @@ TBD
 Na
 
 #Acknowledgements:
-API.ai - excellent bot tool with built in machine learning for 
+API.ai - excellent bot tool with built in machine learning for
 
 #Next steps:
 Deploy on node
