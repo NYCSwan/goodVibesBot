@@ -5,11 +5,15 @@
   "main": "index.js",
   "repository": {
     "type": "git",
-    "url": "nycswan"
+    "url": "https://github.com/nycswan/goodVibesBot.git"
   },
   "scripts": {
+    "start": "node server.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
-  "author": "",
-  "license": "ISC"
+  "author": "nycswan",
+  "license": "ISC",
+  "dependencies": {
+    "express": "^4.15.4"
+  }
 }
